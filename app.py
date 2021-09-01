@@ -19,8 +19,11 @@ def get_data():
 def index():
     if request.method == 'POST':
         tc = request.form.get("tc")
+        if not tc or len(tc)!= 11:
+            return render_template('index.html', mesaj='11 haneli TC Numaranızı Giriniz!')
         data=get_data()
         sonuc= data[data['TC']==tc]
+        
         if(sonuc.empty):
             return render_template('index.html', mesaj='Başarılı Olamadınız')
         
