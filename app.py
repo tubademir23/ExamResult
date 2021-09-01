@@ -7,7 +7,9 @@ headings=('İsim', 'TC Kimlik No', 'Puan', 'Sıralama')
 columns=['ADI_SOYADI','TC', 'PUAN','SIRALAMA']
 def get_data():
     DATA_PATH=os.path.abspath('sonuc')
+    print("Sonuç Pathi:",DATA_PATH)
     files = os.listdir(DATA_PATH)  
+    
     df = pd.DataFrame()
     for file in files:
         df_ = pd.read_excel(os.path.join(DATA_PATH, file), index_col=None)
