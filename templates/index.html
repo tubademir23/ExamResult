@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Gaziantep Sonuç Açıklama</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link href="index.css" rel="stylesheet">
+        <style>
+            table {
+                border-spacing: 0;
+                margin-left: 3rem;
+                margin-right: 3rem;
+                font-family: arial, sans-serif;
+                width: 100%;
+            }
+            
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+            
+            tr:nth-child(even) {
+                text-align: center;
+              background-color: #dddddd;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container_fluid">
+            <div class="row">  <br/><h1 style="color: #2e6c80; text-align: center;"> </h1></div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-1">
+                        <br/>
+                        <img src={{ url_for('static', filename='logo.jpg') }} alt="Diyanet" width="150" height="150">
+                           
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="damon-head">
+                            <br/>
+                            <h1 style="color: #154085; text-align: center;">T.C.</h1>
+                            <h2 style="color: #154085; text-align: center;">GAZİANTEP İL MÜFTÜLÜĞÜ</h2>
+                            <p  style="color: #0a111d; text-align: center;">SINAV SONUÇLARI SORGULAMA SAYFASI</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+                <div class="row"><div class="col-sm-12"></div></div>
+                
+                <div class="row">
+                    <div class="col-sm-5"></div>
+                    <div class="col-sm-7">
+                        <div class="damon-head">
+                            <form method="post" action="{{ url_for("index")}}">
+                                <input class="name" name="tc"  maxlength="11" placeholder="T.C. Kimlik No"/>
+                                <button type="submit">Sorgula</button>
+                          
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" >
+                    <div class="col-sm-4">
+                        <br>
+                    </div>
+                    <div class="col-sm-8"></div>
+                        <table>
+                            <tr>
+                                {% for header in headings %}
+                                    <th>{{ header }}</th>
+                                {% endfor %}
+                            </tr>
+                           <tr></tr>
+                            {% for cell in data %}
+                            
+                              <td>{{ cell }}</td>
+                           
+                            {% endfor %}
+                             </tr>
+                             
+                        </table>
+                    </div>
+                </div>
+                <div id="sonuc">
+                    {% block sonuc %}
+                    <div class="container_fluid">
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-8">
+                                <hr>
+                                <p>{{mesaj}}
+                                </p>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                    </div>
+                    {% endblock%}
+                </div>
+            
+                <div id="footer">
+                    {% block footer %}
+                    <div class="container_fluid">
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-8">
+                                <hr>
+                                <p>Sınavda başarılı olanlar ihtiyaç oldukça başarı sırasına göre başvuru yapılan birimce görevlendirilecektir.
+                                </p>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                    </div>
+                    {% endblock%}
+                </div>
+            </div>
+      
+    </body>
+</html>
