@@ -3,8 +3,8 @@ import os
 import pandas as pd
 
 app = Flask(__name__)
-headings=( 'Sıralama', 'İlçe','İsim', 'TC Kimlik No', 'Puan')
-columns=['SIRALAMA','ILCE','ADI_SOYADI','TC', 'PUAN']
+headings=( 'Sıralama', 'İlçe','İsim', 'TC Kimlik No', 'Puan', 'DHBT')
+columns=['SIRALAMA','ILCE','ADI_SOYADI','TC', 'PUAN','DHBT']
 def get_data():
     DATA_PATH=os.path.abspath('sonuc')
     print("Sonuç Pathi:",DATA_PATH)
@@ -25,7 +25,7 @@ def index():
             return render_template('index.html', mesaj='11 haneli TC Numaranızı Giriniz!')
         data=get_data()
         sonuc= data[data['TC']==tc]
-        
+        print(sonuc)
         if(sonuc.empty):
             return render_template('index.html', mesaj='Başarılı Olamadınız')
         
