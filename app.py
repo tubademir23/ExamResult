@@ -7,7 +7,7 @@ headings=( 'Sıralama', 'İlçe','İsim', 'TC Kimlik No', 'Puan', 'DHBT')
 columns=['SIRALAMA','ILCE','ADI_SOYADI','TC', 'PUAN','DHBT']
 def get_data():
     DATA_PATH=os.path.abspath('sonuc')
-    print("Sonuç Pathi:",DATA_PATH)
+   
     files = os.listdir(DATA_PATH)  
     
     df = pd.DataFrame()
