@@ -6,14 +6,20 @@ app = Flask(__name__)
 headings=( 'Sıralama', 'İlçe','İsim', 'TC Kimlik No', 'Puan', 'DHBT')
 columns=['SIRALAMA','ILCE','ADI_SOYADI','TC', 'PUAN','DHBT']
 def get_data():
-    DATA_PATH=os.path.abspath('results')
-   
+
+    df= pd.read_excel("tum.xlsx", index_col=None, ignore_index=True)
+    
+    """
+    print(dff.head())
+    DATA_PATH=os.path.abspath('sonuc')
+    
     files = os.listdir(DATA_PATH)  
     
     df = pd.DataFrame()
     for file in files:
         df_ = pd.read_excel(os.path.join(DATA_PATH, file), index_col=None)
         df = df.append(df_, ignore_index=True)
+    """
     df['TC'] = df['TC'].apply(str)
     return df
 
@@ -25,7 +31,7 @@ def index():
             return render_template('index.html', mesaj='11 haneli TC Numaranızı Giriniz!')
         data=get_data()
         sonuc= data[data['TC']==tc]
-        print(sonuc)
+        
         if(sonuc.empty):
             return render_template('index.html', mesaj='Başarılı Olamadınız')
         
