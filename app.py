@@ -7,7 +7,7 @@ headings=( 'Sıralama', 'İlçe','İsim', 'TC Kimlik No', 'Puan', 'DHBT')
 columns=['SIRALAMA','ILCE','ADI_SOYADI','TC', 'PUAN','DHBT']
 def get_data():
 
-    df= pd.read_excel("tum.xlsx", index_col=None, ignore_index=True)
+    df= pd.read_excel("tum.xlsx", index_col=None)
     
     """
     print(dff.head())
