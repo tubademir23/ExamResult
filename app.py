@@ -3,8 +3,8 @@ import os
 import pandas as pd
 
 app = Flask(__name__)
-headings=('İsim', 'TC Kimlik No', 'Puan', 'Sıralama')
-columns=['ADI_SOYADI','TC', 'PUAN','SIRALAMA']
+headings=( 'Sıralama', 'İlçe','İsim', 'TC Kimlik No', 'Puan')
+columns=['SIRALAMA','ILCE','ADI_SOYADI','TC', 'PUAN']
 def get_data():
     DATA_PATH=os.path.abspath('sonuc')
     print("Sonuç Pathi:",DATA_PATH)
